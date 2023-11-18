@@ -1,0 +1,27 @@
+<nav class="flex items-center justify-between flex-row p-4 w-full m-auto px-32 pt-6">
+  <div class="flex items-center flex-shrink-0 text-headline">
+    <%= image_tag 'logo', class: "w-8 h-8 mr-2", alt: 'Logo'%>
+    <span class="font-semibold text-xl tracking-tight">
+      <%= I18n.t('project_name') %>
+    </span>
+    <div class="flex-row flex ml-4">
+      <div class="text-sm flex flex-row content-center">
+        <a href="" class="text-dark mr-4 text-xl cursor-default">
+          |
+        </a>
+        <a href="#responsive-header" class="text-headline hover:text-button mr-4 text-xl">
+          Docs
+        </a>
+        <a href="#responsive-header" class="text-headline hover:text-button mr-4 text-xl">
+          Pricing
+        </a>
+        <a href="#responsive-header" class="text-headline hover:text-button text-xl">
+          Blog
+        </a>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= link_to "Login", new_user_session_path, class: "inline-block text-base px-4 py-2 leading-none border rounded text-button-text border-button-text bg-button hover:bg-tertiary hover:text-main lg:mt-0 text-md"  %>
+  </div>
+</nav>

@@ -1,0 +1,44 @@
+<section class="m-auto">
+  <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <%= link_to root_path, class: 'flex items-center mb-6 text-2xl font-semibold text-headline' do %>
+        <%= image_tag 'logo', class: "w-8 h-8 mr-2", alt: 'Logo'%>
+        <%= I18n.t('project_name') %>
+      <% end %>
+      <div class="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-secondary dark:border-gray-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                  Sign in to your account
+              </h1>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="field">
+                <%= f.label :email, class: "my-2 block text-sm font-medium text-gray-900 dark:text-white"%>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
+              </div>
+
+              <div class="field">
+                <%= f.label :password, class: "my-2 block text-sm font-medium text-gray-900 dark:text-white" %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-600 focus:border-sky-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="field mt-2">
+                  <%= f.check_box :remember_me, class: "w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-sky-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-sky-600 dark:ring-offset-gray-800" %>
+                  <%= f.label :remember_me, class: "text-gray-500 dark:text-gray-300" %>
+                </div>
+              <% end %>
+
+              <div class="actions">
+                <%= f.submit "Log in", class: "my-2 w-full text-white text-button-text border-button-text bg-button hover:bg-tertiary focus:ring-4  font-medium rounded-lg text-sm px-5 py-2.5 text-center" %>
+              </div>
+            <% end %>
+            <span class="text-sm font-light text-gray-500 dark:text-gray-400">
+                Don’t have an account yet? <%= link_to "Sign up", new_registration_path(resource_name), class: "font-medium text-sky-600 hover:underline dark:text-sky-500" %><br>
+            </span>
+            <span class="text-sm font-light text-gray-500 dark:text-gray-400">
+                <%= link_to "Forgot your password?", new_password_path(resource_name), class: "text-sm font-medium text-sky-600 hover:underline dark:text-sky-500" %>
+            </span>
+          </div>
+      </div>
+  </div>
+</section>
