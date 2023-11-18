@@ -67,4 +67,21 @@ takes = (1..10).map do
   )
 end
 
+# Crear un proceso con 5 pasos
+company_process = CompanyProcess.create(
+  name: 'Fabricación de Jeans',
+  description: 'Proceso para fabricar jeans',
+  company: company
+)
+
+# Crear 5 pasos para el proceso
+process_steps = (1..5).map do |step_order|
+  ProcessStep.create(
+    name: "Paso #{step_order}",
+    description: "Descripción del paso #{step_order}",
+    step_order: step_order,
+    company_process: company_process
+  )
+end
+
 # Más seed data si es necesario...

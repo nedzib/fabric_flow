@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_18_161302) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_18_163123) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_161302) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_companies_on_owner_id"
+  end
+
+  create_table "company_processes", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_processes_on_company_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -32,6 +41,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_161302) do
     t.datetime "updated_at", null: false
     t.index ["provider_id"], name: "index_materials_on_provider_id"
     t.index ["warehouse_id"], name: "index_materials_on_warehouse_id"
+  end
+
+  create_table "process_steps", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "step_order"
+    t.bigint "company_process_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_process_id"], name: "index_process_steps_on_company_process_id"
   end
 
   create_table "providers", force: :cascade do |t|
@@ -79,8 +98,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_161302) do
   end
 
   add_foreign_key "companies", "users", column: "owner_id"
+  add_foreign_key "company_processes", "companies"
   add_foreign_key "materials", "providers"
   add_foreign_key "materials", "warehouses"
+  add_foreign_key "process_steps", "company_processes"
   add_foreign_key "providers", "companies"
   add_foreign_key "takes", "materials"
   add_foreign_key "warehouses", "companies"

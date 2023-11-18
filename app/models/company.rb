@@ -21,4 +21,5 @@ class Company < ApplicationRecord
   has_many :employees, class_name: 'User', foreign_key: 'company_id'
   has_many :providers
   has_many :warehouses
+  has_many :company_processes
 end
