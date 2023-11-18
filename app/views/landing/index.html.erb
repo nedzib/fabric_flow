@@ -2,13 +2,13 @@
   <div>
     <%= render(Navbar::NavbarComponent.new(show: true)) %>
   </div>
-  <section class="mb-10 grid justify-center text-center overflow-hidden px-4 pt-20">
-    <h1 class="text-headline text-6xl text-center m-auto font-bold leading-none">Lorem ipsum dolor sit amet</h1>
-    <p class="z-20 text-center text-2xl text-highlight my-3">consectetur adipiscing elit, sed do eiusmod tempor</p>
+  <section class="mb-10 grid justify-center text-center overflow-hidden pt-20">
+    <h1 class="text-headline text-6xl text-center m-auto font-bold leading-none">Potenciando tu producción, transformando tu éxito.</h1>
+    <p class="z-20 text-center text-2xl text-highlight my-3">Impulsa tu empresa con <%= I18n.t('project_name') %>. ¡Descubre la innovación hoy mismo!</p>
     <div class="flex flex-col-reverse items-center lg:flex-row">
       <div class="lg:w-1/2 px-10 pt-6 lg:pt-0">
-        <p class="text-paragraph text-2xl ">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        <p class="text-paragraph text-2xl text-justify">
+          Descubre el futuro de la gestión empresarial con <%= I18n.t('project_name') %>. Ofrecemos soluciones integrales que incluyen gestión de inventario, reportería avanzada y soporte de inteligencia artificial. Con planes de precios flexibles, estamos aquí para potenciar el éxito de pequeñas y medianas empresas. Únete a nosotros para transformar tu visión empresarial en una realidad exitosa.
         </p>
       </div>
       <div class="lg:w-1/2">
@@ -16,7 +16,7 @@
       </div>
     </div>
   </section>
-  <section class="overflow-hidden">
+  <section class="overflow-hidden" id="video">
     <article class="relative z-30 flex items-center justify-center bg-secondary px-4 py-10 text-black">
       <div class="container grid place-items-center px-4 text-center">
         <div class="max-w-6xl overflow-hidden rounded-xl">
@@ -65,15 +65,17 @@
       </div>
     </article>
   </section>
-  <section class="relative overflow-hidden bg-primary-400 py-10">
+  <section class="relative overflow-hidden bg-primary-400 py-3" id="pricing">
+    <%= render partial: "pricing" %>
+  </section>
+  <section class="relative overflow-hidden bg-primary-400 py-3" id="contact">
     <div class="container mx-auto flex justify-center gap-8 px-4 text-center md:py-20">
       <div class="z-10 flex flex-col items-center">
-        <h2 class="mb-2 text-4xl font-semibold text-headline">Be the first to use new features</h2>
-        <p class="mb-6 max-w-[40ch] text-xl text-highlight">Sign up for project updates, early exclusive features, and to find out when
-          it's ready.</p>
+        <h2 class="mb-2 text-4xl font-semibold text-headline">Contacto</h2>
+        <p class="mb-6 max-w-[40ch] text-xl text-highlight">Para mas información, planes personalizados o simplemente conocer más del proyecto, nuestro correo esta al alcance de un clic.</p>
         <a href="#">
           <button class="flex items-center justify-center relative overflow-hidden text-center whitespace-nowrap transition duration-100 ease-out disabled:opacity-50 disabled:cursor-default py-3 px-5 text-base font-semibold h-12 text-button-text border-button-text bg-button hover:bg-tertiary hover:text-main rounded-md" type="button">
-            <span>Join the list</span></button>
+            <span>Enviar correo</span></button>
         </a></div>
     </div>
   </section>

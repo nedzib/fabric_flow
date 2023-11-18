@@ -1,5 +1,5 @@
 <!-- component -->
-<nav class=" bg-main w-full flex relative justify-between items-center mx-auto px-8 h-20">
+<nav class=" w-full text-main flex relative justify-between items-center mx-auto my-3 px-8 h-20">
   <!-- logo -->
   <% if @view == :dash_index %>
   <div class="inline-flex flex-col">
@@ -14,7 +14,7 @@
             {
               include_blank: false,
               onchange: 'this.form.submit();',
-              class: "block w-full p-2 rounded border focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+              class: "block w-full p-2 rounded border focus:outline-none focus:shadow-outline-blue focus:border-blue-300 text-stroke"
             }
           ) %>
     <% end %>
@@ -22,7 +22,8 @@
   <% end %>
 
   <% if @view == :warehouses %>
-    <div class="inline-flex ">
+    <div class="inline-flex items-center ">
+      <i class="far fa-inventory mx-1 text-4xl"></i>
       <h1 class="font-bold text-xl">
         Bodegas
       </h1>
@@ -30,7 +31,8 @@
   <% end %>
 
   <% if @view == :directory %>
-    <div class="inline-flex ">
+    <div class="inline-flex items-center">
+      <i class="far fa-address-card mx-1 text-4xl"></i>
       <h1 class="font-bold text-xl">
         Proveedores
       </h1>
@@ -42,34 +44,42 @@
 
 
 
-  <div class="flex flex-row">
+  <div class="flex flex-row justify-center">
     <%= link_to dashboard_path, title: "Procesos" do %>
-      <div class="flex flex-row justify-center items-center ml-5">
+      <div class="flex flex-row justify-center items-center ml-5 hover:text-highlight">
         <h1 class="font-bold text-xl">|</h1>
-        <i class="fas fa-industry-alt mx-1"></i>
         <h1 class="font-bold text-xl">
           Procesos
         </h1>
+        <i class="fas fa-industry-alt mx-1"></i>
       </div>
     <% end %>
     <%= link_to dashboard_warehouses_path, title: "Bodegas" do %>
-      <div class="flex flex-row justify-center items-center ml-5">
+      <div class="flex flex-row justify-center items-center ml-5 hover:text-highlight">
         <h1 class="font-bold text-xl">|</h1>
-        <i class="fas fa-warehouse-alt mx-1"></i>
         <h1 class="font-bold text-xl">
           Bodegas
         </h1>
+        <i class="fas fa-warehouse-alt mx-1"></i>
       </div>
     <% end %>
     <%= link_to resources_directory_path, title: "Directorio" do %>
-      <div class="flex flex-row justify-center items-center ml-5">
+      <div class="flex flex-row justify-center items-center ml-5 hover:text-highlight">
         <h1 class="font-bold text-xl">|</h1>
-        <i class="fas fa-address-book mx-1"></i>
         <h1 class="font-bold text-xl">
           Proveedores
         </h1>
+        <i class="fas fa-address-book mx-1"></i>
       </div>
     <% end %>
+    <%= button_to destroy_user_session_path, method: :delete, class: "flex flex-row justify-center items-center ml-5 text-highlight hover:text-tertiary", title: "Cerrar Sesión" do %>
+      <h1 class="font-bold text-xl">|</h1>
+      <h1 class="font-bold text-xl">Salir</h1>
+      <i class="fas fa-sign-out mx-1"></i>
+    <% end %>
+
   </div>
+
+
   <!-- end search bar -->
 </nav>
