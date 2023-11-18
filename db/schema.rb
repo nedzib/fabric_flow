@@ -107,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_165102) do
   end
 
   create_table "warehouses", force: :cascade do |t|
+    t.string "name"
     t.string "address"
     t.float "capacity"
     t.bigint "responsible_id", null: false

@@ -43,6 +43,7 @@ providers = (1..10).map do
 end
 
 warehouse = Warehouse.create(
+  name: Faker::Company.name,
   address: Faker::Address.full_address,
   capacity: Faker::Number.decimal(l_digits: 4),
   company: company,

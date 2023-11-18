@@ -5,6 +5,7 @@
 #  id             :bigint           not null, primary key
 #  address        :string
 #  capacity       :float
+#  name           :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  company_id     :bigint           not null

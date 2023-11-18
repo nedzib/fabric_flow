@@ -10,10 +10,7 @@ class DashboardController < ApplicationController
 
   def warehouses
     @company = current_user.companies.last
-    @processes = @company.company_processes
-    @selected_process = params[:process_id] || @processes.first&.id
-    @steps = @selected_process ? CompanyProcess.find(@selected_process).process_steps : []
-    @item_flows_by_step = load_item_flows_by_step(@selected_process)
+    @warehouses = @company.warehouses
   end
 
   private

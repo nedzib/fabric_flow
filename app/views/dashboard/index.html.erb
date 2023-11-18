@@ -1,6 +1,6 @@
 <main class="relative -z-0 h-full w-full bg-gray-100">
   <div>
-    <%= render(Navbardash::Component.new(show: true, processes: @processes, selected_process: @selected_process, company: @company)) %>
+    <%= render(Navbardash::Component.new(show: true, view: :dash_index, processes: @processes, selected_process: @selected_process, company: @company)) %>
   </div>
 
   <div class="flex flex-row justify-around">
@@ -14,6 +14,7 @@
           <div class="bg-gray-100 p-2 mb-2 rounded-md border shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
             <div class="flex flex-col justify-between">
               <div class="font-semibold text-gray-800 text-lg">
+                <i class="fas fa-tshirt"></i>
                 <%= item_flow.item.name %> - <%= item_flow.item.model %>
               </div>
               <div class="text-sm text-gray-500">

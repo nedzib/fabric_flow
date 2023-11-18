@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!-- app/views/dashboard/warehouses.html.erb -->
+<main class="relative -z-0 h-full w-full bg-gray-100">
+  <div>
+    <%= render(Navbardash::Component.new(show: true, view: :warehouses)) %>
+  </div>
 
-</body>
-</html>
+  <% @warehouses.each do |warehouse| %>
+    <div class="mb-6 bg-main rounded-lg shadow-md p-6 w-fit m-3">
+      <h2 class="text-xl font-semibold mb-2"><%= warehouse.name %></h2>
+
+      <!-- Gráfico de tipo pie con Chartkick -->
+      <div class="my-4">
+        <%= pie_chart warehouse.materials.group(:material_type).count, library: { legend: { position: 'bottom' } } %>
+      </div>
+
+      <!-- Barra de progreso con Tailwind CSS -->
+      <% total_size = warehouse.materials.sum(:size) %>
+      <% capacity_percentage = (total_size / warehouse.capacity) * 100 %>
+      <h1 class="text-white ">Capacidad Utilizada: <span class="text-indigo-500"><%= number_to_percentage(capacity_percentage, precision: 2) %></span></h1>
+      <h1 class="text-white ">Capacidad Total: <span class="text-indigo-500"><%= warehouse.capacity.to_s + " M^3" %></span></h1>
+      <div class="relative w-full rounded-full overflow-hidden mt-4">
+        <div class="w-full h-full bg-secondary absolute"></div>
+        <div class="h-full bg-indigo-500 sm:bg-tertiary absolute" style="width:<%= number_to_percentage(capacity_percentage, precision: 2) %>"></div>
+        <div class="h-4 w-full rounded-md mt-2"></div>
+      </div>
+
+      <!-- Desplegable para ver detalles de los materiales en una tabla -->
+      <details class="mt-4">
+        <summary class="cursor-pointer text-indigo-500 font-semibold">Ver Detalles</summary>
+        <div class="mt-2">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tamaño</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% warehouse.materials.each do |material| %>
+              <tr class="bg-white">
+                <td class="px-6 py-4 whitespace-nowrap"><%= material.size %> M^3</td>
+                <td class="px-6 py-4 whitespace-nowrap"><%= material.material_type %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  <% end %>
+</main>
