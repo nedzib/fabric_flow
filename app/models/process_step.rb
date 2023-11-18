@@ -20,4 +20,5 @@
 #
 class ProcessStep < ApplicationRecord
   belongs_to :company_process
+  has_many :item_flows, foreign_key: 'step_id'
 end

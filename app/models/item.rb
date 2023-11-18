@@ -21,4 +21,5 @@
 class Item < ApplicationRecord
   belongs_to :process, class_name: 'CompanyProcess'
   enum status: { draft: 0, active: 1, archived: 2 }
+  has_many :item_flows
 end

@@ -103,4 +103,20 @@ items << Item.create(model: 'Modelo Archived', name: 'Jean Archived', status: :a
   )
 end
 
+# Obtén un Process existente con Steps y un ItemFlow existente para asociarlos
+process = CompanyProcess.first
+steps = process.process_steps
+item_flow = ItemFlow.first
+
+# Crea ItemFlows para cada Step del Process con items activos
+item_flows = []
+
+steps.each do |step|
+  item_flows << ItemFlow.create(
+    status: ItemFlow.statuses[:in_process],  # Asigna un estado específico, por ejemplo, 'active'
+    item: process.items.active.sample,
+    step: step
+  )
+end
+
 # Más seed data si es necesario...
