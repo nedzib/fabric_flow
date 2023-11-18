@@ -84,4 +84,23 @@ process_steps = (1..5).map do |step_order|
   )
 end
 
+
+# Crea items asociados a ese proceso con diferentes estados
+items = []
+
+# Crea al menos un Item en cada estado
+items << Item.create(model: 'Modelo Draft', name: 'Jean Draft', status: :draft, process: company_process)
+items << Item.create(model: 'Modelo Active', name: 'Jean Active', status: :active, process: company_process)
+items << Item.create(model: 'Modelo Archived', name: 'Jean Archived', status: :archived, process: company_process)
+
+# Crea otros items con estados aleatorios
+(1..2).each do |i|
+  items << Item.create(
+    model: "Modelo #{i}",
+    name: "Jean #{i}",
+    status: Item.statuses.keys.sample,
+    process: company_process
+  )
+end
+
 # Más seed data si es necesario...

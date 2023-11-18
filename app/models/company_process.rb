@@ -20,4 +20,5 @@
 class CompanyProcess < ApplicationRecord
   belongs_to :company
   has_many :process_steps
+  has_many :items, class_name: 'Item', foreign_key: 'process_id'
 end

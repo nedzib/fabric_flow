@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_18_163123) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_18_164141) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_163123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_processes_on_company_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "model"
+    t.integer "status"
+    t.bigint "process_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["process_id"], name: "index_items_on_process_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -99,6 +109,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_163123) do
 
   add_foreign_key "companies", "users", column: "owner_id"
   add_foreign_key "company_processes", "companies"
+  add_foreign_key "items", "company_processes", column: "process_id"
   add_foreign_key "materials", "providers"
   add_foreign_key "materials", "warehouses"
   add_foreign_key "process_steps", "company_processes"
