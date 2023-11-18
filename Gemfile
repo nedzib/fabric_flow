@@ -91,3 +91,5 @@ gem "faker", "~> 3.2"
 gem "chartkick", "~> 5.0"
 
 gem "progress_bar", "~> 1.3"
+
+gem "rails-erd", "~> 1.7"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'resources/directory'
   get '/dashboard/', to: 'dashboard#index'
   get '/dashboard/warehouses', to: 'dashboard#warehouses'
   devise_for :users

@@ -1,0 +1,29 @@
+<!-- app/views/directory/index.html.erb -->
+<main class="relative -z-0 h-full w-full bg-gray-100">
+  <div>
+    <%= render(Navbardash::Component.new(show: true, view: :directory)) %>
+  </div>
+
+  <div class="flex w-full justify-center">
+    <table class="w-11/12 divide-y divide-gray-200 bg-main m-3 rounded-xl">
+      <thead class="bg-gray-50">
+      <tr>
+        <th class="px-6 py-3 text-left font-bold text-gray-500 uppercase tracking-wider">Empresa</th>
+        <th class="px-6 py-3 text-left font-bold text-gray-500 uppercase tracking-wider">Correo Electrónico</th>
+        <th class="px-6 py-3 text-left font-bold text-gray-500 uppercase tracking-wider">Teléfono</th>
+        <th class="px-6 py-3 text-left font-bold text-gray-500 uppercase tracking-wider">Detalle</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @providers.each do |provider| %>
+        <tr class="bg-white">
+          <td class="px-6 py-4 whitespace-nowrap"><%= provider.name %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= provider.email %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= provider.phone %></td>
+          <td class="px-6 py-4 whitespace-nowrap"><%= provider.info %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</main>

@@ -6,11 +6,11 @@
 
   <% @warehouses.each do |warehouse| %>
     <div class="mb-6 bg-main rounded-lg shadow-md p-6 w-fit m-3">
-      <h2 class="text-xl font-semibold mb-2"><%= warehouse.name %></h2>
+      <h2 class="text-xl font-semibold"><%= warehouse.name %></h2>
 
       <!-- Gráfico de tipo pie con Chartkick -->
-      <div class="my-4">
-        <%= pie_chart warehouse.materials.group(:material_type).count, library: { legend: { position: 'bottom' } } %>
+      <div class="">
+        <%= pie_chart warehouse.materials.group(:material_type).count, library: { legend: { position: 'bottom' }, backgroundColor: "#e8e4e6" } %>
       </div>
 
       <!-- Barra de progreso con Tailwind CSS -->

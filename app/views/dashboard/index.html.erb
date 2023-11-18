@@ -6,7 +6,7 @@
   <div class="flex flex-row justify-around">
     <% @steps.each do |step| %>
       <div class="bg-main p-4 rounded-md m-3 h-screen w-128 shadow-md">
-        <div class="flex flex-row justify-between mb-4">
+        <div class="flex flex-row justify-between mb-4 border-b">
           <h2 class="text-lg font-semibold text-gray-800"><%= step.name %></h2>
           <h3 class="text-lg font-semibold text-gray-800"><%= @item_flows_by_step[step.id].count.to_s + " de " + @item_flows_by_step.values.count.to_s %></h3>
         </div>
