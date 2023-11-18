@@ -22,6 +22,11 @@ module.exports = {
       secondary: '#abd1c6',
       tertiary: '#e16162',
     },
+    extend: {
+      width: {
+        '128': '160rem',
+      }
+    }
   },
   plugins: [
   ]

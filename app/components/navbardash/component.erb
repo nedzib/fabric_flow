@@ -1,0 +1,25 @@
+<!-- component -->
+<nav class=" bg-main w-full flex relative justify-between items-center mx-auto px-8 h-20">
+  <!-- logo -->
+  <div class="inline-flex">
+    <%= form_with(url: dashboard_path, method: :get) do %>
+      <%= select_tag(
+            :process_id,
+            options_from_collection_for_select(@processes, 'id', 'name', @selected_process),
+            {
+              include_blank: true,
+              onchange: 'this.form.submit();',
+              class: "block w-full p-2 rounded border focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+            }
+          ) %>
+    <% end %>
+  </div>
+
+  <!-- end logo -->
+
+  <!-- search bar -->
+  <div class="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
+      <%= @company.name %>
+  </div>
+  <!-- end search bar -->
+</nav>

@@ -1,0 +1,29 @@
+<main class="relative -z-0 h-full w-full bg-gray-100">
+  <div>
+    <%= render(Navbardash::Component.new(show: true, processes: @processes, selected_process: @selected_process, company: @company)) %>
+  </div>
+
+  <div class="flex flex-row justify-around">
+    <% @steps.each do |step| %>
+      <div class="bg-main p-4 rounded-md m-3 h-screen w-128 shadow-md">
+        <div class="flex flex-row justify-between mb-4">
+          <h2 class="text-lg font-semibold text-gray-800"><%= step.name %></h2>
+          <h3 class="text-lg font-semibold text-gray-800"><%= @item_flows_by_step[step.id].count.to_s + " de " + @item_flows_by_step.values.count.to_s %></h3>
+        </div>
+        <% @item_flows_by_step[step.id].each do |item_flow| %>
+          <div class="bg-gray-100 p-2 mb-2 rounded-md border shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <div class="flex flex-col justify-between">
+              <div class="font-semibold text-gray-800 text-lg">
+                <%= item_flow.item.name %> - <%= item_flow.item.model %>
+              </div>
+              <div class="text-sm text-gray-500">
+                Estado: <%= item_flow.item.status %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</main>
